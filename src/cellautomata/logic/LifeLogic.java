@@ -22,8 +22,8 @@ public class LifeLogic {
     private String stringState;
     private boolean[] sArray = new boolean[9]; //Array of S cases, in which cells remain ON.
     private boolean[] bArray = new boolean[9]; //Array of B cases, in which cells remain OFF
-    private int[][] currentState; // = new int[100][200];
-    private int[][] nextState; // = new int[100][200];
+    private int[][] currentState;
+    private int[][] nextState;
     private int rows, cols;
     
     public LifeLogic(String ruleString, int cols, int rows){
@@ -81,15 +81,7 @@ public class LifeLogic {
             }
         }
         
-        ///////////////
-           /*// PRINT TEST!!
-        for(int i=0; i<numbers.length; i++){
-            System.out.print("\n");
-            for(int j=0; j<numbers[i].length; j++){
-                System.out.print(numbers[i][j]+" ");
-            }   
-        }  */// PRINT TEST!!
-        //////////////
+        
         for(int i=0; i<numbers.length; i++)
             for(int j=0; j<numbers[i].length; j++){
                 if(numbers[i][j] >= 0){

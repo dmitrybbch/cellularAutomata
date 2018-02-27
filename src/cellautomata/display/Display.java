@@ -2,7 +2,6 @@ package cellautomata.display;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.text.NumberFormat;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -12,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.text.Document;
+
 
 public class Display {
     //Initial values of JSwing elements
@@ -33,8 +34,8 @@ public class Display {
     private JButton resetButton;
     private JButton randomButton;
     private JButton playButton;
-    private JFormattedTextField sRuleTextField;
-    private JFormattedTextField bRuleTextField;
+    private JTextField sRuleTextField;
+    private JTextField bRuleTextField;
     private JLabel sLabel;
     private JLabel bLabel;
     private JCheckBox linesCheckBox;
@@ -68,17 +69,15 @@ public class Display {
          panelButtons.add(linesCheckBox);
         sLabel = new JLabel("S");
          panelButtons.add(sLabel);
-        sRuleTextField = new JFormattedTextField();
-        //sRuleTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        sRuleTextField.setText("23");               //NO MAGIC NUMBERS
+        sRuleTextField = new JTextField();
+        sRuleTextField.setText("");
         sRuleTextField.setColumns(6);               //Width NO MAGIC NUMBERS!!
          panelButtons.add(sRuleTextField);
         bLabel = new JLabel("B");                   //NO MAGIC NUMBERS
          panelButtons.add(bLabel);
-        bRuleTextField = new JFormattedTextField();
-        bRuleTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        bRuleTextField.setText("3");
-        bRuleTextField.setColumns(5);               //Width NO MAGIC NUMBERS!!
+        bRuleTextField = new JTextField();
+        bRuleTextField.setText("");
+        bRuleTextField.setColumns(6);               //Width NO MAGIC NUMBERS!!
          panelButtons.add(bRuleTextField);
         speedSlider = new JSlider(1, 200); //speedSlider.setValue(); ///NO MAGIC NUMBERS!!
          panelButtons.add(speedSlider);

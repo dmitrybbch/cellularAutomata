@@ -21,9 +21,13 @@ public class CellAutomata implements Runnable{
     //Stuff
     public int fps;
     public float fadeSpeed;
+    
+    //Logic
+    private final int COLS, ROWS;
+    private int startingSRule;
+    private int startingBRule;
     private int RANDOMIZER_PERCENT;
     
-    private final int COLS, ROWS;
     private Color ONCELL_COLOR;
     private final Color START_FADE_COLOR;
     private final Color END_FADE_COLOR;
@@ -62,7 +66,7 @@ public class CellAutomata implements Runnable{
     private TailCheckBoxListener tailCheckBoxListener;
     
     //Constructor
-    public CellAutomata(String title, int width, int height, int fps, int cols, int rows, Color bgColor, Color onCellColor, Color lineColor, Color startFadeColor, Color endFadeColor, float fadeSpeed, int randomizerPercent){
+    public CellAutomata(String title, int width, int height, int fps, int cols, int rows, int startingSRule, int startingBRule, Color bgColor, Color onCellColor, Color lineColor, Color startFadeColor, Color endFadeColor, float fadeSpeed, int randomizerPercent){
         this.height = height;
         this.width = width;
         this.title = title;
@@ -71,6 +75,8 @@ public class CellAutomata implements Runnable{
         
         this.COLS = cols;
         this.ROWS = rows;
+        this.startingSRule = startingSRule;
+        this.startingBRule = startingBRule;
         this.BACKGROUND_COLOR = bgColor;
         this.ONCELL_COLOR = onCellColor;
         this.START_FADE_COLOR = startFadeColor;
@@ -78,7 +84,7 @@ public class CellAutomata implements Runnable{
         this.LINES_COLOR = lineColor;
         this.fadeSpeed = fadeSpeed;
         
-        lifeLogic = new LifeLogic("23/3", COLS, ROWS);
+        lifeLogic = new LifeLogic(startingSRule +"/"+ startingBRule, COLS, ROWS);
         
         keyDispatcher = new KeyDispatcher(this, lifeLogic);
         keyManager = new KeyManager(this, lifeLogic);

@@ -18,8 +18,10 @@ public class AppLauncher {
     private static int fps = 60;
     
     //Logic basis constants
-    private static final int COLS = 800, ROWS = 400;
+    private static final int COLS = 400, ROWS = 200;
     private static final int RANDOMIZER_PERCENT = 30;
+    private static final int STARTING_S_RULE = 23;
+    private static final int STARTING_B_RULE = 3;
     
     //Drawing constants
     private static final Color BACKGROUND_COLOR = Color.DARK_GRAY; //DARK_GRAY
@@ -32,7 +34,7 @@ public class AppLauncher {
     //Go to Display.java to edit JSwing elements' initial values
     
     public static void main(String[] args) {
-        CellAutomata cellAutomata = new CellAutomata(TITLE, WIDTH, HEIGHT, fps, COLS, ROWS, BACKGROUND_COLOR, ONCELL_COLOR, LINES_COLOR, START_FADE_COLOR, END_FADE_COLOR, FADE_SPEED, RANDOMIZER_PERCENT);
+        CellAutomata cellAutomata = new CellAutomata(TITLE, WIDTH, HEIGHT, fps, COLS, ROWS, STARTING_S_RULE, STARTING_B_RULE, BACKGROUND_COLOR, ONCELL_COLOR, LINES_COLOR, START_FADE_COLOR, END_FADE_COLOR, FADE_SPEED, RANDOMIZER_PERCENT);
         cellAutomata.start();
     }
     
