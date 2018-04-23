@@ -63,7 +63,7 @@ public class LoadListener implements ActionListener{
             lifeLogic.setLogic(newRuleString);
             lifeLogic.setCurrentState(builder.toString());
         }
-        else if(file.getName().endsWith("jpg")){
+        else if(file.getName().endsWith("jpg") || file.getName().endsWith("png")){
             
             
             BufferedImage image = loadImage(file);
@@ -81,13 +81,12 @@ public class LoadListener implements ActionListener{
                     int conversionFactor = 255 / (numberOfShades - 1);
                     int averageValue = (red + green + blue) / 3;
                     pixels[y][x] = (int) (((averageValue / conversionFactor) + 0.5) * conversionFactor);
-
-                    //pixels[y][x] = (red+green+blue) / 3;
             }
             
-        }
-        else if(file.getName().endsWith("png")){
-            Display.alert("File extension not supported. Working on it...");
+            //////UPDATING THE ACTUAL LIFELOGIC
+            lifeLogic.clear();
+            lifeLogic.setCurrentState(pixels);
+            
         }
         else Display.alert("File extension not supported.");
         

@@ -24,7 +24,10 @@ public class LifeLogic {
     private boolean[] bArray = new boolean[9]; //Array of B cases, in which cells remain OFF
     private int[][] currentState;
     private int[][] nextState;
-    private int rows, cols;
+    private final int rows;
+    private final int cols;
+    
+    private int grayScaleThreshold = 50;  // If a pixel's greyScale number is less than (darker than) this number, the corresponding cell will be alive.
     
     public LifeLogic(String ruleString, int cols, int rows){
         currentState = new int[rows][cols];
@@ -39,7 +42,7 @@ public class LifeLogic {
         stringToCases();
     }
     
-    public void stringToCases(){ ///Extract the rules from the rulestring
+    public final void stringToCases(){ ///Extract the rules from the rulestring
         String[] beforeAfter = ruleString.split("/");
         if(display != null) display.getsRuleTextField().setText(beforeAfter[0]);
         if(display != null) display.getbRuleTextField().setText(beforeAfter[1]);
@@ -195,9 +198,11 @@ public class LifeLogic {
         stringToState();
     }
     
-    public void setCurrentState(int[][] intState){
-        for(int i=0; i<intState.length; i++)
-            System.arraycopy(intState, 0, currentState, 0, intState[i].length);
+    public void setCurrentState(int[][] pixels){
+        for(int i=0; i< Math.min(currentState.length, pixels.length); i++)
+            for(int j=0; j< Math.min(currentState[i].length, pixels[i].length); j++)
+                if(pixels[i][j] < grayScaleThreshold) currentState[i][j] = 0;
+                else currentState[i][j] = pixels[i][j];
     }
     
     public void setDisplay(Display display){

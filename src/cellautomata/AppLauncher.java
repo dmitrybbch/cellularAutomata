@@ -17,7 +17,7 @@ public class AppLauncher {
     private static int fps = 60;
     
     //Logic basis constants
-    private static final int COLS = 400, ROWS = 200;
+    private static final int COLS = 800, ROWS = 400;
     private static final int RANDOMIZER_PERCENT = 30;
     private static final int STARTING_S_RULE = 23;
     private static final int STARTING_B_RULE = 3;
