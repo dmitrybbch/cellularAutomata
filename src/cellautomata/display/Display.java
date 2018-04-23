@@ -5,19 +5,22 @@ import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-import javax.swing.text.Document;
 
 
 public class Display {
     //Initial values of JSwing elements
     private boolean drawTails = true;   // Determines if cells will leave trails after dying
     private boolean drawLines = false;  // Determines if lines will be drawn between cells
+    private final byte TEXT_COLS = 6;
+    private final short SLIDER_MIN_SPEED = 1;
+    private final short SLIDER_MAX_SPEED = 200;
+    private final short PANEL_MAX_WIDTH = 2000;
     
     //Window
     private JFrame frame;
@@ -62,24 +65,24 @@ public class Display {
                 
         panelButtons = new JPanel();
         tailCheckBox = new JCheckBox("Draw tail");
-        tailCheckBox.setSelected(true);
+        tailCheckBox.setSelected(drawTails);
          panelButtons.add(tailCheckBox);
         linesCheckBox = new JCheckBox("Draw lines");
-        linesCheckBox.setSelected(false);
+        linesCheckBox.setSelected(drawLines);
          panelButtons.add(linesCheckBox);
         sLabel = new JLabel("S");
          panelButtons.add(sLabel);
         sRuleTextField = new JTextField();
         sRuleTextField.setText("");
-        sRuleTextField.setColumns(6);               //Width NO MAGIC NUMBERS!!
+        sRuleTextField.setColumns(TEXT_COLS);
          panelButtons.add(sRuleTextField);
-        bLabel = new JLabel("B");                   //NO MAGIC NUMBERS
+        bLabel = new JLabel("B");
          panelButtons.add(bLabel);
         bRuleTextField = new JTextField();
         bRuleTextField.setText("");
-        bRuleTextField.setColumns(6);               //Width NO MAGIC NUMBERS!!
+        bRuleTextField.setColumns(TEXT_COLS);
          panelButtons.add(bRuleTextField);
-        speedSlider = new JSlider(1, 200); //speedSlider.setValue(); ///NO MAGIC NUMBERS!!
+        speedSlider = new JSlider(SLIDER_MIN_SPEED, SLIDER_MAX_SPEED);   //or use speedSlider.setValue();
          panelButtons.add(speedSlider);
         loadButton = new JButton("Load");
          panelButtons.add(loadButton);
@@ -95,7 +98,7 @@ public class Display {
         frame.add(panelCanvas);
         frame.add(panelButtons);
                 
-        panelButtons.setMaximumSize(new Dimension(2000, panelButtons.getHeight())); // NO MAGIC NUMBERS!
+        panelButtons.setMaximumSize(new Dimension(PANEL_MAX_WIDTH, panelButtons.getHeight())); // NO MAGIC NUMBERS!
         panelButtons.setAlignmentY(Component.BOTTOM_ALIGNMENT);
                 
         frame.setVisible(true);
@@ -180,6 +183,12 @@ public class Display {
         
     public JCheckBox getTailCheckBox() {
         return tailCheckBox;
+    }
+    
+    //Static methods
+    
+    public static void alert(String msg){
+        JOptionPane.showMessageDialog(null, msg);
     }
         
 }

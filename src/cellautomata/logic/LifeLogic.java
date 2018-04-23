@@ -69,7 +69,6 @@ public class LifeLogic {
     
     public void stringToState(){ //Extract the current state form the stringstate
         String[] singleLines = stringState.split("\n");
-        
         int numbers[][] = new int[singleLines.length][];
         
         for(int i=0; i<singleLines.length; i++){
@@ -80,7 +79,6 @@ public class LifeLogic {
                 numbers[i][j] = Integer.parseInt(singleNumbers[j]);
             }
         }
-        
         
         for(int i=0; i<numbers.length; i++)
             for(int j=0; j<numbers[i].length; j++){
@@ -96,23 +94,9 @@ public class LifeLogic {
                     nextState[i][j] = -1;
                     currentState[i][j] = -1;
                 }
-            }
-                
-        
-        /*
-        for(int i=0; i<singleLines.length; i++)
-            for(int j=0; j<singleLines[i].length(); j++){
-                nextState[i][j] = (singleLines[i].charAt(j) == '1' ? 0 : -1);
-                currentState[i][j] = (singleLines[i].charAt(j) == '1' ? 0 : -1);
-            }
-        /*
-        for(int i=0; i<rows; i++){
-            System.out.print("\n");
-            for(int j=0; j<cols; j++)
-                System.out.print(currentState[i][j]? 1 : 0);
-       }
-       */      
+            }    
     }
+    
     
     public void tick(){
         
@@ -209,6 +193,11 @@ public class LifeLogic {
     public void setCurrentState(String stringState){
         this.stringState = stringState;
         stringToState();
+    }
+    
+    public void setCurrentState(int[][] intState){
+        for(int i=0; i<intState.length; i++)
+            System.arraycopy(intState, 0, currentState, 0, intState[i].length);
     }
     
     public void setDisplay(Display display){

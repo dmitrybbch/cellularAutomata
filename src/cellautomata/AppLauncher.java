@@ -1,13 +1,12 @@
 /*
-* Automata cellulare, progetto d'esame
+* Cellular Automata, ever expanding upon the first thesis project.
  */
 package cellautomata;
 
 import java.awt.Color;
 
 /**
- *
- * @author Dzmitry Babich
+ * @author Dmitry Babich
  */
 public class AppLauncher {
     
